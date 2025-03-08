@@ -1,5 +1,6 @@
 package org.campus02.stack;
 
+import org.campus02.stack.stackexceptions.StackEmptyException;
 import org.campus02.stack.stackexceptions.StackFullException;
 
 public class IntStack {
@@ -21,7 +22,10 @@ public class IntStack {
         stack[pointer] = value;
     }
 
-    public int pop() {
+    public int pop() throws StackEmptyException {
+        if (pointer == -1) {
+            throw new StackEmptyException("Stack ist leer");
+        }
         int actualValue = stack[pointer];
         stack[pointer] = 0;
         pointer--;
